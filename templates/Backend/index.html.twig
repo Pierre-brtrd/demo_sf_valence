@@ -1,0 +1,60 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	Admin |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid mt-4">
+		<h1>Bienvenue sur l'admin de l'app Symfony</h1>
+		<div class="row mt-4">
+			<div class="col-md-6">
+				<h2 class="text-center">Liste des users</h2>
+				<div class="row">
+					{% for user in users %}
+						<div class="col-md-4">
+							<div class="card">
+								<h3 class="card-header">
+									{{ user.prenom }}
+									{{ user.nom }}
+								</h3>
+								<div class="card-body">
+									<p class="card-text">
+										Age:
+										{{ user.age }}ans
+									</p>
+									<p class="card-text">
+										Ville:
+										{{ user.ville }}
+									</p>
+									<p class="card-text">
+										Email:
+										{{ user.email }}
+									</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h2 class="text-center">Liste des Articles</h2>
+				<a href="{{ path('admin.article.create') }}" class="btn btn-inline btn-primary mt-4 mb-2 text-light">Créer un article</a>
+				<div class="row">
+					{% for article in articles %}
+						<div class="col-md-4">
+							<div class="card">
+								<h3 class="card-header">{{ article.titre }}</h3>
+								<div class="card-body">
+									<em class="card-text">{{ article.createdAt|format_datetime('full', 'none', locale='fr') }}</em>
+									<p class="card-text">{{ article.content }}</p>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
