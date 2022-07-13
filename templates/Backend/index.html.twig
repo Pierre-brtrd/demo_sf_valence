@@ -49,6 +49,11 @@
 								<div class="card-body">
 									<em class="card-text">{{ article.createdAt|format_datetime('full', 'none', locale='fr') }}</em>
 									<p class="card-text">{{ article.content }}</p>
+									<div class="row mt-4">
+										<div class="col-md-6">
+											<a href="{{ path('admin.article.edit', {id: article.id} ) }}" class="btn btn-warning">Modifier</a>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
