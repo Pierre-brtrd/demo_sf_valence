@@ -7,23 +7,20 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link active" aria-current="page" href="#">Home</a>
-					<a class="nav-link" href="#">Features</a>
-					<a class="nav-link" href="#">Pricing</a>
-					<a class="nav-link disabled">Disabled</a>
+					<a class="nav-link active" aria-current="page" href="{{ path('home') }}">Home</a>
 				</div>
 			</div>
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
-					<div class="ml-left">
+					<div class="navbar-btn me-2">
 						<a href="{{ path('admin') }}" class="btn btn-secondary">Admin</a>
 					</div>
 				{% endif %}
-				<div class="ml-left ml-4">
+				<div class="navbar-btn">
 					<a href="{{ path('logout') }}" class="btn btn-danger">Se deconnecter</a>
 				</div>
 			{% else %}
-				<div class="ml-left">
+				<div class="navbar-btn">
 					<a href="{{ path('login') }}" class="btn btn-secondary">Login</a>
 				</div>
 			{% endif %}

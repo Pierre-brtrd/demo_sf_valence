@@ -1,0 +1,18 @@
+.banner {
+    background-image: url("../../images/banner-single-creation-graphique.jpg");
+    background-size: cover;
+    height: 60vh;
+
+    .header {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .title {
+            background-color: rgba(252, 248, 232, 0.55);
+            border-radius: $radius-default;
+            padding: 1em;
+        }
+    }
+}

@@ -6,21 +6,24 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Page d'accueil de mon app Symfony</h1>
+	{% include "Home/_banner.html.twig" %}
 
-	{{ dump(data) }}
-
-	<p>
-		Nom :
-		{{ data.nom }}
-	</p>
-	<p>
-		Age :
-		{{ data.age }}
-	</p>
-	<p>
-		Ville :
-		{{ data.ville }}
-	</p>
+	<div class="container mt-4">
+		<div class="row">
+			{% for article in articles %}
+				<div class="col-md-4">
+					<div class="blog-card">
+						<div class="blog-card-image">
+							<img src="https://fakeimg.pl/200x100" alt="">
+						</div>
+						<div class="blog-card-content">
+							<h2 class="blog-card-header">{{ article.titre }}</h2>
+							<p>{{ article.content }}</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 
 {% endblock %}

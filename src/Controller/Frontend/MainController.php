@@ -2,6 +2,7 @@
 
 namespace App\Controller\Frontend;
 
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,6 +12,11 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MainController extends AbstractController
 {
+    public function __construct(ArticleRepository $repoArticle)
+    {
+        $this->repoArticle = $repoArticle;
+    }
+
     /**
      *  Affiche la page d'accueil
      * 
@@ -19,12 +25,11 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
-        $data = [
-            'nom' => "Pierre",
-            'age' => 25,
-            'ville' => "Chambéry"
-        ];
+        // Récupère tous les articles
+        $articles = $this->repoArticle->findAll();
 
-        return $this->render('Home/index.html.twig', ['data' => $data]);
+        return $this->render('Home/index.html.twig', [
+            'articles' => $articles
+        ]);
     }
 }

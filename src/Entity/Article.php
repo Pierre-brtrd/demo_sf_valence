@@ -20,6 +20,10 @@ class Article
     #[ORM\Column(type: 'text')]
     private $content;
 
+    #[ORM\Column(length: 260, unique: true)]
+    #[Gedmo\Slug(fields: ['titre'])]
+    private $slug;
+
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
     private $updatedAt;
@@ -55,6 +59,11 @@ class Article
         $this->content = $content;
 
         return $this;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
