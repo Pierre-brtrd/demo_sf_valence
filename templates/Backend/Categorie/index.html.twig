@@ -3,13 +3,15 @@
 {% block body %}
 	<section class="container mt-4">
 		<h1 class="text-center">Admin des catégories</h1>
+		<a href="{{ path('app_categorie_new') }}" class="btn btn-primary text-light">Créer une catégorie</a>
 		<div class="d-flex flex-wrap justify-content-between gap-2 mt-4">
 			{% for categorie in categories %}
-				{{ dump(categorie) }}
 				<div class="blog-card mt-0">
 					<div class="blog-card-content">
 						<div class="row align-items-center">
-							<div class="col-md-6">{{ categorie.titre }}</div>
+							<div class="col-md-6">
+								<h2>{{ categorie.titre }}</h2>
+							</div>
 							<div class="col-md-6">
 								<div class="form-check form-switch">
 									<input class="form-check-input" type="checkbox" role="switch" value="{{ categorie.id }}" {{ categorie.enable ? 'checked' }}>
@@ -17,43 +19,17 @@
 								</div>
 							</div>
 						</div>
+						<div class="row mt-2">
+							<div class="col-md-6">
+								<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-warning">Modifier</a>
+							</div>
+							<div class="col-md-6">
+								{% include "Backend/Categorie/_delete_form.html.twig" %}
+							</div>
+						</div>
 					</div>
 				</div>
 			{% endfor %}
 		</div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Titre</th>
-					<th>Enable</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for categorie in categories %}
-					<tr>
-						<td>{{ categorie.id }}</td>
-						<td>{{ categorie.titre }}</td>
-						<td>{{ categorie.enable ? 'Yes' : 'No' }}</td>
-						<td>
-							<div class="row">
-								<div class="col-md-6">
-									<a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}" class="btn btn-warning">Modifier</a>
-								</div>
-								<div class="col-md-6">
-									{% include "Backend/Categorie/_delete_form.html.twig" %}
-								</div>
-							</div>
-						</td>
-					</tr>
-				{% else %}
-					<tr>
-						<td colspan="4">no records found</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		<a href="{{ path('app_categorie_new') }}" class="btn btn-primary">Créer une catégorie</a>
 	</section>
 {% endblock %}
