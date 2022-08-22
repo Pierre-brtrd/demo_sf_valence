@@ -20,7 +20,7 @@
     "private": true,
     "config": {
         "commitizen": {
-          "path": "@commitlint/cz-commitlint"
+            "path": "@commitlint/cz-commitlint"
         }
     },
     "scripts": {
@@ -31,6 +31,7 @@
         "postinstall": "husky install"
     },
     "dependencies": {
+        "axios": "^0.27.2",
         "bootstrap": "^5.1.3"
     }
 }

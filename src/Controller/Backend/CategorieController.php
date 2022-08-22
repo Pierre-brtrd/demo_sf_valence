@@ -67,4 +67,18 @@ class CategorieController extends AbstractController
 
         return $this->redirectToRoute('app_categorie_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/switch/{id}', name: 'app_categorie_visibility', methods: ['GET'])]
+    public function switchVisibilityTag(?Categorie $categorie, CategorieRepository $categorieRepository)
+    {
+        if (!$categorie instanceof Categorie) {
+            return new Response('Categorie non trouvée', 404);
+        } else {
+            $categorie->setEnable(!$categorie->isEnable());
+            //$categorie->isEnable() ? $categorie->setEnable(false) : $categorie->setEnable(true);
+            $categorieRepository->add($categorie, true);
+
+            return new Response('Visibility changed', 201);
+        }
+    }
 }

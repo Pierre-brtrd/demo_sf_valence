@@ -1,5 +1,20 @@
 {% extends "layout.html.twig" %}
 
+{% block title %}
+	Admin catégories |
+	{{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
 {% block body %}
 	<section class="container mt-4">
 		<h1 class="text-center">Admin des catégories</h1>
@@ -14,7 +29,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-check form-switch">
-									<input class="form-check-input" type="checkbox" role="switch" value="{{ categorie.id }}" {{ categorie.enable ? 'checked' }}>
+									<input class="form-check-input" type="checkbox" role="switch" value="{{ categorie.id }}" data-switch-active-tag {{ categorie.enable ? 'checked' }}>
 									<label class="form-check-label">Actif</label>
 								</div>
 							</div>
