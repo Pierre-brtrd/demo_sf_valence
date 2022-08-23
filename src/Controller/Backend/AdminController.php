@@ -53,7 +53,7 @@ class AdminController extends AbstractController
         $users = $this->repoUser->findAll();
 
         // Récupérer tout les articles
-        $articles = $this->repoArticle->findAll();
+        $articles = $this->repoArticle->findBy(['titre' => 'Symfony 6']);
 
         return $this->render('Backend/index.html.twig', [
             'articles' => $articles,

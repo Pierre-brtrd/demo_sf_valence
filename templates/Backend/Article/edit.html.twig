@@ -9,14 +9,7 @@
 	<div class="container-fluid mt-4">
 		<div class="card w-50 mx-auto p-3">
 			<h1 class="text-center">Modification d'un article</h1>
-			{{ form_start(form) }}
-
-			{{ form_row(form.titre) }}
-			{{ form_row(form.content) }}
-			<div class="text-center">
-				<button type="submit" class="btn btn-primary btn-inline">Modifier</button>
-			</div>
-			{{ form_end(form) }}
+			{% include "Backend/Article/_form.html.twig" with { button_label: 'Modifier'} %}
 		</div>
 	</div>
 {% endblock %}
