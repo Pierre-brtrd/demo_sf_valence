@@ -46,7 +46,8 @@
         "symfony/yaml": "6.1.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3.4",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "vich/uploader-bundle": "^1.21"
     },
     "config": {
         "allow-plugins": {
@@ -96,7 +97,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "6.1.*"
         }
     },

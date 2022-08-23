@@ -5,6 +5,16 @@
 	{{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
 {% block body %}
 	<div class="container-fluid mt-4">
 		<div class="card w-50 mx-auto p-3">

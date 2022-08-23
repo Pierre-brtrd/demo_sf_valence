@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArticleType extends AbstractType
 {
@@ -32,6 +33,12 @@ class ArticleType extends AbstractType
                         ->andWhere('c.enable = true')
                         ->orderBy('c.titre', 'ASC');
                 }
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'label' => 'Image:',
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu:',
