@@ -12,9 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MainController extends AbstractController
 {
-    public function __construct(ArticleRepository $repoArticle)
-    {
-        $this->repoArticle = $repoArticle;
+    public function __construct(
+        private ArticleRepository $repoArticle
+    ) {
     }
 
     /**

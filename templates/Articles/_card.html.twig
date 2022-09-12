@@ -1,0 +1,26 @@
+<div class="blog-card">
+	{% if article.imageName %}
+		<div class="blog-card-image">
+			<img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.titre }}">
+		</div>
+	{% endif %}
+	<div class="blog-card-content">
+		<p class="blog-card-date">{{ article.createdAt|format_datetime('full', 'none', locale='fr') }}</p>
+		<h2 class="blog-card-header">{{ article.titre }}</h2>
+		<p class="blog-card-content-description">{{ article.content }}</p>
+		{% if admin is defined and admin is not null %}
+			<div class="row mt-2">
+				<div class="col-md-6">
+					<a href="{{ path('admin.article.edit', {id: article.id} ) }}" class="btn btn-warning">Modifier</a>
+				</div>
+				<div class="col-md-6">
+					<form method="POST" action="{{ path('admin.article.delete', {id: article.id} ) }}" onsubmit="return confirm('Êtes-vous vraiment sûr ?')">
+						<input type="hidden" name="_method" value="DELETE">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+						<button class="btn btn-danger">Supprimer</button>
+					</form>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</div>
