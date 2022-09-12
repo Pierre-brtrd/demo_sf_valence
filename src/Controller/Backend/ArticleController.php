@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class Admin Controller
  * @Route("/admin")
  */
-class AdminController extends AbstractController
+class ArticleController extends AbstractController
 {
     /**
      * Article repository to find article object
