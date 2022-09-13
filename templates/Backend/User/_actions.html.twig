@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-6">
-		<a href="#" class="btn btn-warning">Modifier</a>
+		<a href="{{ path('admin.user.edit', {'id': user.id}) }}" class="btn btn-warning">Modifier</a>
 	</div>
 	<div class="col-md-6">
 		{% include "Backend/User/_delete.html.twig" %}

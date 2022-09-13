@@ -3,6 +3,7 @@
 namespace App\Controller\Backend;
 
 use App\Entity\User;
+use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,6 +35,36 @@ class UserController extends AbstractController
 
         return $this->render('Backend/User/index.html.twig', [
             'users' => $users
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'admin.user.edit')]
+    public function editUser(?User $user, Request $request): Response|RedirectResponse
+    {
+        if (!$user instanceof User) {
+            $this->addFlash('error', 'l\'id de l\'utilisateur n\'existe pas');
+
+            return $this->redirectToRoute('admin.index.user');
+        }
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Envoie la modification du user en bdd
+            $this->repoUser->add($user, true);
+
+            // On ajoute un message de succès
+            $this->addFlash('success', 'User modifié avec succès');
+
+            // On redigire vers la page de liste user
+            return $this->redirectToRoute('admin.user.index');
+        }
+
+        // On envoi la vue de la page d'édition avec le formulaire
+        return $this->renderForm('Backend/User/edit.html.twig', [
+            'form' => $form,
+            'user' => $user
         ]);
     }
 

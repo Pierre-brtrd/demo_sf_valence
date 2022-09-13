@@ -1,0 +1,31 @@
+{{ form_start(form) }}
+
+{% if form.prenom is defined and form.nom is defined and form.username is defined and form.age is defined and form.email is defined and form.ville is defined %}
+	<div class="row">
+		<div class="col-md-6">
+			{{ form_row(form.prenom)}}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.nom)}}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9">
+			{{ form_row(form.username) }}
+		</div>
+		<div class="col-md-3">
+			{{ form_row(form.age) }}
+		</div>
+	</div>
+
+	{{ form_row(form.email) }}
+	{{ form_row(form.ville) }}
+{% endif %}
+
+{{ form_row(form.roles) }}
+
+<div class="text-center">
+	<button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+
+{{ form_end(form) }}

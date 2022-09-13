@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	Edit
+	{{ user.prenom }}
+	{{ user.nom }}
+	|
+	{{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags('admin') }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4">
+		<div class="card p-3 w-50 mx-auto">
+			<h1 class="text-center">
+				Modification de
+				{{ user.prenom }}
+				{{ user.nom }}
+			</h1>
+			{% include "Backend/User/_form.html.twig" with {button_label: 'Modifier'} %}
+		</div>
+	</section>
+{% endblock %}
