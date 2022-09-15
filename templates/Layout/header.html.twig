@@ -39,12 +39,30 @@
 						</ul>
 					</div>
 				{% endif %}
+				<div class="navbar-btn me-2">
+					<a href="{{ path('app.user.compte') }}" class="btn btn-light">
+						<i class="bi bi-person-badge-fill"></i>
+						Compte
+					</a>
+				</div>
 				<div class="navbar-btn">
-					<a href="{{ path('logout') }}" class="btn btn-danger">Se deconnecter</a>
+					<a href="{{ path('logout') }}" class="btn btn-danger">
+						<i class="bi bi-door-open-fill"></i>
+						Se deconnecter
+					</a>
 				</div>
 			{% else %}
+				<div class="navbar-btn me-2">
+					<a href="{{ path('login') }}" class="btn btn-secondary">
+						<i class="bi bi-box-arrow-in-right"></i>
+						Login
+					</a>
+				</div>
 				<div class="navbar-btn">
-					<a href="{{ path('login') }}" class="btn btn-secondary">Login</a>
+					<a href="{{ path('register') }}" class="btn btn-light">
+						<i class="bi bi-person-plus"></i>
+						SignUp
+					</a>
 				</div>
 			{% endif %}
 		</div>

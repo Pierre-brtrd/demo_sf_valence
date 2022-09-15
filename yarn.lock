@@ -2611,12 +2611,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "bootstrap@npm:5.1.3"
+"bootstrap@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "bootstrap@npm:5.2.1"
   peerDependencies:
-    "@popperjs/core": ^2.10.2
-  checksum: c69349a23a6978f34ffbe01fea51f70f97f672d1f67fa1d01cdd1c575d5aae209475316d5976b0f03702797d46c5389dfbffafcd1a6e65e8e6e183cd6f6f3ff3
+    "@popperjs/core": ^2.11.6
+  checksum: 17ec5409847ff6180bc3f2133824d4924bb42eef7783a23e2aeefbcf2080b41e64cff5779beb7d881ea68ccd2fe561b9be89903390a7c012798aa27730b08822
   languageName: node
   linkType: hard
 
@@ -4072,13 +4072,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.9":
+"follow-redirects@npm:^1.0.0":
   version: 1.15.1
   resolution: "follow-redirects@npm:1.15.1"
   peerDependenciesMeta:
     debug:
       optional: true
   checksum: 1f3e06bfb5c5351456e4fdb9197aa09158452d6400a06240a80204708b7a68f1bb47d6e94127112844136f66ad3283f9c92fa3c5c76aa96db8bd44214ea922b8
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.14.9":
+  version: 1.15.2
+  resolution: "follow-redirects@npm:1.15.2"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 930171f8b81bf00e9368df4b17f3b835934762d51192632af53a51a8a608d5510a1ffbc6da5761dce9996cdbd750740490ca844320e5ff11cdaf2329a5a69647
   languageName: node
   linkType: hard
 
@@ -6833,7 +6843,7 @@ __metadata:
     "@symfony/stimulus-bridge": "npm:^3.2.0"
     "@symfony/webpack-encore": "npm:^3.0.0"
     axios: "npm:^0.27.2"
-    bootstrap: "npm:^5.1.3"
+    bootstrap: "npm:^5.2.1"
     bootstrap-icons: "npm:^1.9.1"
     commitizen: "npm:^4.2.5"
     core-js: "npm:^3.23.0"

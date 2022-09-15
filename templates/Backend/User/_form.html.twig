@@ -20,10 +20,20 @@
 	</div>
 
 	{{ form_row(form.email) }}
-	{{ form_row(form.ville) }}
+	{{ form_row(form.address) }}
+	<div class="row">
+		<div class="col-md-8">
+			{{ form_row(form.ville) }}
+		</div>
+		<div class="col-md-4">
+			{{ form_row(form.zipCode) }}
+		</div>
+	</div>
 {% endif %}
 
-{{ form_row(form.roles) }}
+{% if form.roles is defined %}
+	{{ form_row(form.roles) }}
+{% endif %}
 
 <div class="text-center">
 	<button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
