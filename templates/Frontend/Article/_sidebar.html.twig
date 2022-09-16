@@ -1,0 +1,30 @@
+<aside class="left-column">
+	<div class="sidebar-content">
+		<div class="info-content mt-2">
+			<h2>Informations:</h2>
+			<p>
+				<i class="bi bi-calendar-heart-fill"></i>
+				<strong>Date de l'article:</strong>
+				{{ article.createdAt|format_datetime('full', 'none') }}
+			</p>
+			<p>
+				<i class="bi bi-person-badge-fill"></i>
+				<strong>Auteur:</strong>
+				{{ article.user.fullName }}
+			</p>
+		</div>
+		{% if article.categories|length > 0 %}
+			<div class="categories-article">
+				<h2>Catégories:</h2>
+				<div class="list-tag">
+					{% for categorie in article.categories %}
+						<p class="tag">
+							<i class="bi bi-tags-fill"></i>
+							{{ categorie.titre }}
+						</p>
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</aside>
