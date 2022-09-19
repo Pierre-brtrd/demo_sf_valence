@@ -1,11 +1,11 @@
 <div class="blog-card">
-	{% if article.imageName %}
+	{% for image in article.images|slice(0, 1) %}
 		<a href="{{ path('app.article.show', {slug: article.slug}) }}">
 			<div class="blog-card-image">
-				<img src="{{ vich_uploader_asset(article, 'imageFile') }}" alt="{{ article.titre }}">
+				<img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ article.titre }}">
 			</div>
 		</a>
-	{% endif %}
+	{% endfor %}
 	<div class="blog-card-content">
 		<p class="blog-card-date">{{ article.createdAt|format_datetime('full', 'none', locale='fr') }}</p>
 		<h2 class="blog-card-header">{{ article.titre }}</h2>

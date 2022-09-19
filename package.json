@@ -31,8 +31,37 @@
         "postinstall": "husky install"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-adapter-ckfinder": "^35.1.0",
+        "@ckeditor/ckeditor5-alignment": "^35.1.0",
+        "@ckeditor/ckeditor5-autoformat": "^35.1.0",
+        "@ckeditor/ckeditor5-basic-styles": "^35.1.0",
+        "@ckeditor/ckeditor5-block-quote": "^35.1.0",
+        "@ckeditor/ckeditor5-code-block": "^35.1.0",
+        "@ckeditor/ckeditor5-dev-utils": "^31.0.0",
+        "@ckeditor/ckeditor5-easy-image": "^35.1.0",
+        "@ckeditor/ckeditor5-editor-classic": "^35.1.0",
+        "@ckeditor/ckeditor5-engine": "^35.1.0",
+        "@ckeditor/ckeditor5-essentials": "^35.1.0",
+        "@ckeditor/ckeditor5-find-and-replace": "^35.1.0",
+        "@ckeditor/ckeditor5-font": "^35.1.0",
+        "@ckeditor/ckeditor5-heading": "^35.1.0",
+        "@ckeditor/ckeditor5-horizontal-line": "^35.1.0",
+        "@ckeditor/ckeditor5-html-embed": "^35.1.0",
+        "@ckeditor/ckeditor5-image": "^35.1.0",
+        "@ckeditor/ckeditor5-indent": "^35.1.0",
+        "@ckeditor/ckeditor5-inspector": "^4.1.0",
+        "@ckeditor/ckeditor5-link": "^35.1.0",
+        "@ckeditor/ckeditor5-list": "^35.1.0",
+        "@ckeditor/ckeditor5-paragraph": "^35.1.0",
+        "@ckeditor/ckeditor5-source-editing": "^35.1.0",
+        "@ckeditor/ckeditor5-theme-lark": "^35.1.0",
+        "@ckeditor/ckeditor5-upload": "^35.1.0",
         "axios": "^0.27.2",
         "bootstrap": "^5.2.1",
-        "bootstrap-icons": "^1.9.1"
+        "bootstrap-icons": "^1.9.1",
+        "css-loader": "^6.7.1",
+        "lodash": "^4.17.21",
+        "postcss-loader": "^7.0.1",
+        "raw-loader": "^4.0.2"
     }
 }

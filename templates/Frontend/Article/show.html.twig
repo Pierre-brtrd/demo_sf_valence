@@ -1,17 +1,17 @@
 {% extends "layout.html.twig" %}
 
 {% block title %}
-    {{ article.titre }} 
-    |
-    {{ parent() }}
+	{{ article.titre }}
+	|
+	{{ parent() }}
 {% endblock %}
 
 {% block body %}
-    {% include "Frontend/Article/_banner.html.twig" %}
-    <section class="container mt-4">
-        <div class="article-main-content">
-            {% include "Frontend/Article/_sidebar.html.twig" %}
-            {% include "Frontend/Article/_content.html.twig" %}
-        </div>
-    </section>
+	{# {% include "Frontend/Article/_banner.html.twig" %} #}
+	<section class="container mt-4">
+		<div class="article-main-content">
+			{% include "Frontend/Article/_sidebar.html.twig" %}
+			{% include "Frontend/Article/_content.html.twig" %}
+		</div>
+	</section>
 {% endblock %}
