@@ -1,5 +1,7 @@
-<div class="banner-image" style="background-image: url('{{ vich_uploader_asset(article, 'imageFile') }}')">
-    <div class="header">
-        <h1>{{ article.titre }}</h1>
-    </div>
-</div>
+{% for image in article.images|slice(0, 1) %}
+	<div class="banner-image" style="background-image: url('{{ vich_uploader_asset(image, 'imageFile') }}')">
+		<div class="header">
+			<h1>{{ article.titre }}</h1>
+		</div>
+	</div>
+{% endfor %}

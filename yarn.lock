@@ -4242,6 +4242,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom7@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "dom7@npm:4.0.4"
+  dependencies:
+    ssr-window: "npm:^4.0.0"
+  checksum: 37e3867d6e79fef81e3dc58ab8031c7e5bb655de54f5fc6957582f92f61b8932471f9c1bfe0c0a8d9f100c28f4cf1028002856fc6db5123bc86d6accb5f24bac
+  languageName: node
+  linkType: hard
+
 "domelementtype@npm:^2.0.1, domelementtype@npm:^2.2.0":
   version: 2.3.0
   resolution: "domelementtype@npm:2.3.0"
@@ -7843,6 +7852,7 @@ __metadata:
     regenerator-runtime: "npm:^0.13.9"
     sass: "npm:^1.53.0"
     sass-loader: "npm:^13.0.0"
+    swiper: "npm:^8.4.2"
     webpack-notifier: "npm:^1.15.0"
   languageName: unknown
   linkType: soft
@@ -8316,6 +8326,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ssr-window@npm:^4.0.0, ssr-window@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "ssr-window@npm:4.0.2"
+  checksum: 8235ddf1dc542231f534660eaf76a4d605a8c66ee247806e0965099625784b2b781aacbead7e2d1068b9cb5972aa7fc9f53e4396c0ddac0482d101713d4ac0fa
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^8.0.1":
   version: 8.0.1
   resolution: "ssri@npm:8.0.1"
@@ -8520,6 +8537,16 @@ __metadata:
   bin:
     svgo: bin/svgo
   checksum: f475df0d8cf24ad6c8498049abd1bc07753f77aa96ae0ca28f323b7e236fc2d94e680a694e8783a95db9e50d4275b76aa993653c45ed60dc985d8dd8609e2650
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^8.4.2":
+  version: 8.4.2
+  resolution: "swiper@npm:8.4.2"
+  dependencies:
+    dom7: "npm:^4.0.4"
+    ssr-window: "npm:^4.0.2"
+  checksum: 31b9f324417170476afdc2cb1177335fb986da31184ec1888750cebb707f480565ba9a3891219cf2e5f36c1c4d25f3707decb7d4b5f9757a9d61044586b58214
   languageName: node
   linkType: hard
 
