@@ -1,0 +1,23 @@
+<div class="comments card p-3 mt-4">
+	<h2>Ajouter un commentaire</h2>
+	{% if app.user %}
+		{{ form_start(form) }}
+		{{ form_row(form.note) }}
+		{{ form_row(form.titre) }}
+		{{ form_row(form.content) }}
+		{{ form_row(form.rgpd) }}
+		<button class="btn btn-primary">Envoyer</button>
+		{{ form_end(form) }}
+	{% else %}
+		<div class="alert alert-info" role="alert">
+			<p>
+				<i class="bi bi-info-circle-fill"></i>
+				<strong>Attention!</strong>
+				<br/>
+				Vous devez
+				<a href="{{ path('login') }}">être connecté</a>
+				pour pouvoir poster un commentaire
+			</p>
+		</div>
+	{% endif %}
+</div>

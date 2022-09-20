@@ -1,0 +1,24 @@
+.show-comments {
+    margin-bottom: 3rem;
+
+    .comments-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .comment-item {
+        border: 1px solid $primary;
+        border-radius: $border-radius;
+        overflow: hidden;
+
+        .comment-header {
+            background: $secondary;
+            padding: 5px 10px;
+        }
+
+        .comment-content {
+            padding: 1rem;
+        }
+    }
+}
