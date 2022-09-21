@@ -29,7 +29,7 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        $comments = $repoComment->findActiveByArticle($article->getId());
+        $comments = $repoComment->findByArticle($article->getId(), true);
 
         $comment = new Comment();
 

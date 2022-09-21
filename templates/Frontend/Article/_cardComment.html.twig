@@ -12,6 +12,17 @@
 				{% endif %}
 			{% endfor %}
 		</div>
+		{% if admin is defined and admin is not null %}
+			<div class="form-check form-switch">
+				<input class="form-check-input" type="checkbox" role="switch" value="{{ comment.id }}" data-switch-active-comment {{ comment.active ? 'checked' }}>
+				<label class="form-check-label">Actif</label>
+			</div>
+			<form method="POST" action="{{ path('admin.comments.delete', {id: comment.id}) }}" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer le commentaire ?')">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+				<button class="btn btn-danger">Supprimer</button>
+			</form>
+		{% endif %}
 		<p class="card-text">
 			<small class="text-muted">{{ comment.createdAt|ago }}</small>
 		</p>
