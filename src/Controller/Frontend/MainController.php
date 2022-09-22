@@ -20,13 +20,13 @@ class MainController extends AbstractController
     /**
      *  Affiche la page d'accueil
      * 
-     * @Route("/", name="home")
      * @return Response
      */
+    #[Route('', name: 'home')]
     public function index(): Response
     {
         // Récupère tous les articles
-        $articles = $this->repoArticle->findAll();
+        $articles = $this->repoArticle->findLatestArticleWithLimit(6);
 
         return $this->render('Frontend/Home/index.html.twig', [
             'articles' => $articles
