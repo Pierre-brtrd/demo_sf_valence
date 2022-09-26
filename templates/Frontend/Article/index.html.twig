@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	Liste des articles |
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	<section class="container mt-4 js-filter">
+		<div class="row">
+			<div class="col-md-3">
+				{% include "Components/_filter.html.twig" with {form: form} only %}
+			</div>
+			<div class="col-md-9">
+				<div class="d-flex justify-content-between mb-2 navigation-blog-list">
+					{% include "Components/_count.html.twig" %}
+					<div class="d-flex justify-content-end gap-2 js-filter-sortable">
+						{% include "Components/_sortable.html.twig" %}
+					</div>
+				</div>
+				{% include "Components/_articles.html.twig" %}
+				{% include "Components/_pagination.html.twig" %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

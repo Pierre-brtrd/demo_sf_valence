@@ -2,9 +2,12 @@
 
 namespace App\Controller\Frontend;
 
+use App\Data\SearchData;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\CommentType;
+use App\Form\SearchArticleType;
+use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +19,25 @@ use Symfony\Component\Security\Core\Security;
 #[Route('/article')]
 class ArticleController extends AbstractController
 {
+    #[Route('/liste', name: 'app.article.index', methods: ['GET', 'POST'])]
+    public function listArticle(ArticleRepository $repoArticle, Request $request): Response
+    {
+        $data = new SearchData;
+
+        $page = $request->get('page', 1);
+        $data->setPage($page);
+
+        $form = $this->createForm(SearchArticleType::class, $data);
+        $form->handleRequest($request);
+
+        $articles = $repoArticle->findSearchData($data);
+
+        return $this->renderForm('Frontend/Article/index.html.twig', [
+            'articles' => $articles,
+            'form' => $form
+        ]);
+    }
+
     #[Route('/details/{slug}', name: 'app.article.show', methods: ['GET', 'POST'])]
     public function showArticle(
         ?Article $article,

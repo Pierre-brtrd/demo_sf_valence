@@ -1,5 +1,10 @@
-<div class="blog-list">
+<div class="blog-list js-filter-content">
 	{% for article in articles %}
 		{% include "Components/_card.html.twig" %}
+	{% else %}
+		<div class="alert alert-info w-100 text-center" role="alert">
+			<i class="bi bi-info-circle-fill"></i>
+			Il n'y a pas d'articles correspondant à votre recherche.
+		</div>
 	{% endfor %}
 </div>

@@ -3,8 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Article;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Article>
@@ -16,8 +19,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ArticleRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
+    public function __construct(
+        ManagerRegistry $registry,
+        private PaginatorInterface $paginator
+    ) {
         parent::__construct($registry, Article::class);
     }
 
@@ -55,6 +60,45 @@ class ArticleRepository extends ServiceEntityRepository
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * Function to search and filter posts
+     *
+     * @param SearchData $search
+     * @return PaginationInterface object with pagination for posts
+     */
+    public function findSearchData(SearchData $search): PaginationInterface
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('a', 'u', 'c', 'co', 'i')
+            ->join('a.user', 'u')
+            ->leftJoin('a.categories', 'c')
+            ->leftJoin('a.comments', 'co')
+            ->leftJoin('a.images', 'i');
+
+        if (!empty($search->getQuery())) {
+            $query = $query->andWhere('a.titre LIKE :titre')
+                ->setParameter('titre', "%{$search->getQuery()}%");
+        }
+
+        if (!empty($search->getCategories())) {
+            $query = $query->andWhere('c.id IN (:tags)')
+                ->setParameter('tags', $search->getCategories());
+        }
+
+        if (!empty($search->getAuteur())) {
+            $query = $query->andWhere('u.id IN (:users)')
+                ->setParameter('users', $search->getAuteur());
+        }
+
+        $query = $query->getQuery();
+
+        return $this->paginator->paginate(
+            $query, /* la requête pas le result */
+            $search->getPage(), /* numéro de la page */
+            6 /* nombre d'éléments par page */
+        );
     }
 
     //    /**
