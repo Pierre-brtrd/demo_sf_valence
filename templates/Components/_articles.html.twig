@@ -1,5 +1,5 @@
 {% for article in articles %}
-	{% include "Components/_card.html.twig" %}
+	{% include "Components/_card.html.twig" with {article: article, admin: (admin is defined) ? admin : false } only %}
 {% else %}
 	<div class="alert alert-info w-100 text-center" role="alert" id="article-no-response">
 		<i class="bi bi-info-circle-fill"></i>

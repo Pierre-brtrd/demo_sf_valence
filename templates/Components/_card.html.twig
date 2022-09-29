@@ -29,7 +29,7 @@
 			{% endif %}
 			<p class="text-muted mb-0">{{ article.user.fullName }}</p>
 		</div>
-		{% if admin is defined and admin is not null %}
+		{% if admin %}
 			<div class="row mt-2">
 				<div class="col-md-6">
 					<a href="{{ path('admin.article.edit', {id: article.id} ) }}" class="btn btn-warning">Modifier</a>

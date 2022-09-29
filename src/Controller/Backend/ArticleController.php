@@ -4,15 +4,18 @@ namespace App\Controller\Backend;
 
 use App\Entity\Article;
 use App\Entity\Comment;
+use App\Data\SearchData;
 use App\Form\ArticleType;
+use App\Form\SearchArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class Admin Controller
@@ -27,13 +30,43 @@ class ArticleController extends AbstractController
     }
 
     #[Route('', name: 'admin')]
-    public function index(): Response
+    public function index(Request $request): Response|JsonResponse
     {
-        // Récupérer tous les articles
-        $articles = $this->repoArticle->findAll();
+        $data = new SearchData;
 
-        return $this->render('Backend/index.html.twig', [
+        $page = $request->get('page', 1);
+        $data->setPage($page);
+
+        $form = $this->createForm(SearchArticleType::class, $data);
+        $form->handleRequest($request);
+
+        $articles = $this->repoArticle->findSearchData($data);
+
+        if ($request->get('ajax')) {
+            return new JsonResponse([
+                'content' => $this->renderView('Components/_articles.html.twig', [
+                    'articles' => $articles,
+                    'admin' => true
+                ]),
+                'sortable' => $this->renderView('Components/_sortable.html.twig', [
+                    'articles' => $articles,
+                    'admin' => true
+                ]),
+                'count' => $this->renderView('Components/_count.html.twig', [
+                    'articles' => $articles,
+                    'admin' => true
+                ]),
+                'pagination' => $this->renderView('Components/_pagination.html.twig', [
+                    'articles' => $articles,
+                    'admin' => true
+                ]),
+                'pages' => ceil($articles->getTotalItemCount() / $articles->getItemNumberPerPage())
+            ]);
+        }
+
+        return $this->renderForm('Backend/index.html.twig', [
             'articles' => $articles,
+            'form' => $form
         ]);
     }
 

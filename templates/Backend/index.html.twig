@@ -16,15 +16,27 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid mt-4">
-		<h1 class="text-center">Liste des articles</h1>
+	<section class="container-fluid mt-4 js-filter">
+		<h1 class="text-center">Administration des articles</h1>
+		<div>
+			<a href="{{ path('admin.article.create') }}" class="btn btn-primary">Créer un article</a>
+		</div>
 		<div class="row mt-4">
-			<div class="col-md-12">
-				<a href="{{ path('admin.article.create') }}" class="btn btn-inline btn-primary mt-4 mb-2 text-light">Créer un article</a>
-				<div class="blog-list">
-					{% include "Components/_articles.html.twig" with {admin: true} %}
+			<div class="col-md-3">
+				{% include "Components/_filter.html.twig" with {form: form} only %}
+			</div>
+			<div class="col-md-9">
+				<div class="d-flex justify-content-between mb-2 navigation-blog-list">
+					{% include "Components/_count.html.twig" %}
+					<div class="d-flex justify-content-end gap-2 js-filter-sortable">
+						{% include "Components/_sortable.html.twig" %}
+					</div>
 				</div>
+				<div class="blog-list js-filter-content">
+					{% include "Components/_articles.html.twig" with { admin: true } %}
+				</div>
+				{% include "Components/_pagination.html.twig" %}
 			</div>
 		</div>
-	</div>
+	</section>
 {% endblock %}
