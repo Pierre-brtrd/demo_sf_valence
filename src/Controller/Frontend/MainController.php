@@ -29,7 +29,8 @@ class MainController extends AbstractController
         $articles = $this->repoArticle->findLatestArticleWithLimit(6);
 
         return $this->render('Frontend/Home/index.html.twig', [
-            'articles' => $articles
+            'articles' => $articles,
+            'currentPage' => 'home',
         ]);
     }
 }

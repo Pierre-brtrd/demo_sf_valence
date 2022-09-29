@@ -7,9 +7,13 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link active" aria-current="page" href="{{ path('home') }}">Home</a>
+					<a class="nav-link {{ currentPage is defined and currentPage == 'home' ? 'active' }}" aria-current="page" href="{{ path('home') }}">Home</a>
+				</div>
+				<div class="navbar-nav">
+					<a class="nav-link {{ currentPage is defined and currentPage == 'articles' ? 'active' }}" aria-current="page" href="{{ path('app.article.index') }}">Article</a>
 				</div>
 			</div>
+
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
 					<div class="dropdown me-2">
