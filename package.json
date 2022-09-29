@@ -62,6 +62,7 @@
         "bootstrap": "^5.2.1",
         "bootstrap-icons": "^1.9.1",
         "css-loader": "^6.7.1",
+        "flip-toolkit": "^7.0.16",
         "lodash": "^4.17.21",
         "postcss-loader": "^7.0.1",
         "raw-loader": "^4.0.2",

@@ -1,3 +1,4 @@
+import { Flipper, spring } from 'flip-toolkit';
 import { debounce } from "lodash";
 
 /**
@@ -119,20 +120,19 @@ export default class Filter {
         })
 
         if (response.status >= 200 && response.status < 300) {
+            this.page = parseInt(new URLSearchParams(window.location.search).get('page') || 1);
+            this.moreNav = this.page == 1;
+
             const data = await response.json();
 
-            if (append) {
-                this.content.innerHTML += data.content;
-            } else {
-                this.content.innerHTML = data.content;
-            }
+            this.flipContent(data.content, append);
 
             if (!this.moreNav) {
                 this.pagination.innerHTML = data.pagination;
-            } else if (this.page == data.pages) {
+            } else if (this.page == data.pages || this.content.children.item(0) === this.content.children.namedItem('article-no-response')) {
                 this.pagination.style.display = 'none';
             } else {
-                this.pagination.style.display = null;
+                this.pagination.style.display = 'block';
             }
 
             this.sortable.innerHTML = data.sortable;
@@ -147,6 +147,77 @@ export default class Filter {
         }
 
         this.hideLoader();
+    }
+
+    /**
+     * Replace all posts card with animation
+     */
+    flipContent(content, append) {
+        const springName = 'veryGentle';
+        const exitSpring = function (element, index, onComplete) {
+            spring({
+                config: 'stiff',
+                values: {
+                    translateY: [0, -20],
+                    opacity: [1, 0],
+                },
+                onUpdate: ({ translateY, opacity }) => {
+                    element.style.transform = `translateY(${translateY}px)`;
+                    element.style.opacity = opacity;
+                },
+                onComplete
+            })
+        }
+
+        const appearSpring = function (element, index) {
+            spring({
+                config: 'stiff',
+                values: {
+                    translateY: [20, 0],
+                    opacity: [0, 1],
+                },
+                onUpdate: ({ translateY, opacity }) => {
+                    element.style.transform = `translateY(${translateY}px)`;
+                    element.style.opacity = opacity;
+                },
+                delay: index * 10
+            })
+        }
+
+        const flipper = new Flipper({
+            element: this.content
+        });
+
+        let cards = this.content.children;
+        for (let card of cards) {
+            flipper.addFlipped({
+                element: card,
+                flipId: card.id,
+                shouldFlip: false,
+                spring: springName,
+                onExit: exitSpring
+            })
+        }
+
+        flipper.recordBeforeUpdate();
+
+        if (append) {
+            this.content.innerHTML += content;
+        } else {
+            this.content.innerHTML = content;
+        }
+
+        cards = this.content.children;
+        for (let card of cards) {
+            flipper.addFlipped({
+                element: card,
+                flipId: card.id,
+                spring: springName,
+                onAppear: appearSpring
+            });
+        }
+
+        flipper.update();
     }
 
     /**

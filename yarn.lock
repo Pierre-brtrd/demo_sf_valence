@@ -4786,6 +4786,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"flip-toolkit@npm:^7.0.16":
+  version: 7.0.16
+  resolution: "flip-toolkit@npm:7.0.16"
+  dependencies:
+    rematrix: "npm:0.2.2"
+  checksum: 7b5c6232c229026fce4af9de4d411affe453980b8e166abe3fd94822ec86044201d4f2acf2270df8ced3ca6999ae6eddb48de13078689b22e7387c68815fa3d9
+  languageName: node
+  linkType: hard
+
 "follow-redirects@npm:^1.0.0":
   version: 1.15.1
   resolution: "follow-redirects@npm:1.15.1"
@@ -7660,6 +7669,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rematrix@npm:0.2.2":
+  version: 0.2.2
+  resolution: "rematrix@npm:0.2.2"
+  checksum: f1706abfe16e48b7e5ff74a33f624f1f39504fcecfa59cb93083d2bbba9392a5350b1b1a64b0c83abbeb202238390eaa7427702c8229e743a97eb2ce847a02c0
+  languageName: node
+  linkType: hard
+
 "renderkid@npm:^3.0.0":
   version: 3.0.0
   resolution: "renderkid@npm:3.0.0"
@@ -7871,6 +7887,7 @@ __metadata:
     commitizen: "npm:^4.2.5"
     core-js: "npm:^3.23.0"
     css-loader: "npm:^6.7.1"
+    flip-toolkit: "npm:^7.0.16"
     husky: "npm:^8.0.1"
     jquery: "npm:^3.6.1"
     lodash: "npm:^4.17.21"
