@@ -1,5 +1,6 @@
 import { Flipper, spring } from 'flip-toolkit';
 import { debounce } from "lodash";
+import visibilityArticles from './switchVisibilityArticle';
 
 /**
  * Class filter for search posts in ajax
@@ -218,6 +219,7 @@ export default class Filter {
         }
 
         flipper.update();
+        visibilityArticles();
     }
 
     /**

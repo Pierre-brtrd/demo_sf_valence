@@ -40,7 +40,7 @@ class ArticleController extends AbstractController
         $form = $this->createForm(SearchArticleType::class, $data);
         $form->handleRequest($request);
 
-        $articles = $this->repoArticle->findSearchData($data);
+        $articles = $this->repoArticle->findSearchData($data, false);
 
         if ($request->get('ajax')) {
             return new JsonResponse([
@@ -112,6 +112,19 @@ class ArticleController extends AbstractController
         return $this->render('Backend/Article/edit.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    #[Route('/article/switch/{id}', name: 'admin.article.switch', methods: ['GET'])]
+    public function switchVisibilityArticle(?Article $article): Response
+    {
+        if ($article instanceof Article) {
+            $article->setActive(!$article->isActive());
+            $this->repoArticle->add($article, true);
+
+            return new Response('Visibility changed', 201);
+        }
+
+        return new Response('Article not found', 404);
     }
 
     #[Route('/article/delete/{id}', name: 'admin.article.delete', methods: 'DELETE|POST')]

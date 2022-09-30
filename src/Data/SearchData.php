@@ -36,6 +36,13 @@ class SearchData
     private ?array $auteur = [];
 
     /**
+     * Array of visibility for the search post
+     *
+     * @var array|null
+     */
+    private ?array $active = [];
+
+    /**
      * Get the value of query
      *
      * @return ?string
@@ -127,6 +134,30 @@ class SearchData
     public function setPage(?int $page): self
     {
         $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of active
+     *
+     * @return ?array
+     */
+    public function getActive(): ?array
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the value of active
+     *
+     * @param ?array $active
+     *
+     * @return self
+     */
+    public function setActive(?array $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

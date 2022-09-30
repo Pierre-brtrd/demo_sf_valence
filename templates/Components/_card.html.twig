@@ -30,6 +30,10 @@
 			<p class="text-muted mb-0">{{ article.user.fullName }}</p>
 		</div>
 		{% if admin %}
+			<div class="form-check form-switch mt-2">
+				<input class="form-check-input" type="checkbox" role="switch" value="{{ article.id }}" data-switch-active-article {{ article.active ? 'checked' }}>
+				<label class="form-check-label">Actif</label>
+			</div>
 			<div class="row mt-2">
 				<div class="col-md-6">
 					<a href="{{ path('admin.article.edit', {id: article.id} ) }}" class="btn btn-warning">Modifier</a>

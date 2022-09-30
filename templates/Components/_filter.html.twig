@@ -11,4 +11,10 @@
 {{ form_row(form.categories, {'attr': {'class': 'd-flex flex-wrap gap-2'} }) }}
 <h2 class="mb-2">Auteurs:</h2>
 {{ form_row(form.auteur, {'attr': {'class': 'd-flex flex-wrap gap-2'} }) }}
-{{ form_end(form) }}
+
+{% if app.request.get('_route') == 'admin' %}
+	<h2 class="mb-2">Visibilité:</h2>
+	{{ form_row(form.active) }}
+{% endif %}
+
+{{ form_end(form, { render_rest: false }) }}

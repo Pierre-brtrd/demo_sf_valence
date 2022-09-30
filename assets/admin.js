@@ -6,3 +6,6 @@ import './js/switchVisibilityTag';
 import './js/ckeditor';
 import './js/addCollectionInput';
 import './js/switchVisibilityComment';
+
+import visibilityArticles from './js/switchVisibilityArticle';
+visibilityArticles();

@@ -56,6 +56,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->select('a', 'u', 'i')
             ->join('a.user', 'u')
             ->leftJoin('a.images', 'i')
+            ->andWhere('a.active = true')
             ->orderBy('a.createdAt', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
@@ -68,7 +69,7 @@ class ArticleRepository extends ServiceEntityRepository
      * @param SearchData $search
      * @return PaginationInterface object with pagination for posts
      */
-    public function findSearchData(SearchData $search): PaginationInterface
+    public function findSearchData(SearchData $search, bool $active = true): PaginationInterface
     {
         $query = $this->createQueryBuilder('a')
             ->select('a', 'u', 'c', 'co', 'i')
@@ -76,6 +77,15 @@ class ArticleRepository extends ServiceEntityRepository
             ->leftJoin('a.categories', 'c')
             ->leftJoin('a.comments', 'co')
             ->leftJoin('a.images', 'i');
+
+        if ($active) {
+            $query->andWhere('a.active = true');
+        } else {
+            if (!empty($search->getActive())) {
+                $query->andWhere('a.active IN (:active)')
+                    ->setParameter('active', $search->getActive());
+            }
+        }
 
         if (!empty($search->getQuery())) {
             $query = $query->andWhere('a.titre LIKE :titre OR a.content LIKE :titre')
