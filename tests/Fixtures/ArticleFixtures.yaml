@@ -3,7 +3,7 @@ include:
     - TagFixtures.yaml
 
 App\Entity\Article:
-    article{1..50}:
+    article{1..19}:
         titre (unique): "Article <current()>"
         content: <generateContent()>
         user: "@userAdmin"
