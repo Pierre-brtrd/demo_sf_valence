@@ -1,0 +1,26 @@
+# On doit définir le namespace de l'objet
+App\Entity\User:
+    # On donne un nom à la fixtures pour pour la retrouver plus facilement
+    userAdmin:
+        email: "admin@example.com"
+        username: "User Admin"
+        nom: "User"
+        prenom: "Admin"
+        age: 25
+        roles: ["ROLE_ADMIN"]
+        address: "XX rue de test"
+        zipCode: "75001"
+        ville: "Paris"
+        # Pour une fonction <NOM DE LA FONCTION(PARAMETRES)>
+        password: "<hashPassword('Test1234')>"
+
+    user{1..10}:
+        email (unique): user<current()>\@domain.com
+        password: "<hashPassword('Test1234')>"
+        username (unique): "<firstName()> <lastName()>"
+        nom: <lastName()>
+        prenom: <firstName()>
+        address: <address()>
+        zipCode: "75000"
+        age: <numberBetween(18, 80)>
+        ville: <city()>

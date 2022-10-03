@@ -23,4 +23,5 @@ return [
     Hautelook\AliceBundle\HautelookAliceBundle::class => ['dev' => true, 'test' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Symfony\UX\Autocomplete\AutocompleteBundle::class => ['all' => true],
+    Liip\TestFixturesBundle\LiipTestFixturesBundle::class => ['dev' => true, 'test' => true],
 ];

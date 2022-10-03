@@ -7,6 +7,7 @@ use App\Repository\ArticleRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
@@ -17,6 +18,12 @@ class Article
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 5,
+        minMessage: 'Le titre de l\'article ne peut pas être inférieur à {{ limit }} caractères',
+        max: 255,
+        maxMessage: 'Le titre de l\'article ne peut pas dépasser {{ limit }} caractères'
+    )]
     private $titre;
 
     #[ORM\Column(type: 'text')]

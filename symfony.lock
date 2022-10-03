@@ -66,6 +66,9 @@
     "knplabs/knp-time-bundle": {
         "version": "v1.19.0"
     },
+    "liip/test-fixtures-bundle": {
+        "version": "2.4.0"
+    },
     "nelmio/alice": {
         "version": "3.11",
         "recipe": {
