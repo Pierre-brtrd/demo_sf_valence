@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Classe Main Controller pour page d'accueil
+ * Classe Main Controller pour page d'accueil.
  */
 class MainController extends AbstractController
 {
@@ -18,8 +18,8 @@ class MainController extends AbstractController
     }
 
     /**
-     *  Affiche la page d'accueil
-     * 
+     *  Affiche la page d'accueil.
+     *
      * @return Response
      */
     #[Route('', name: 'home')]

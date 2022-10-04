@@ -20,7 +20,7 @@ class TagProvider
             'WebDesign',
             'Maquette',
             'Data',
-            'SQL'
+            'SQL',
         ];
 
         return $tagList[array_rand($tagList)];

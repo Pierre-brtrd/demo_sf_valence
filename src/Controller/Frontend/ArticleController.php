@@ -9,12 +9,12 @@ use App\Form\CommentType;
 use App\Form\SearchArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
 #[Route('/article')]
@@ -25,7 +25,7 @@ class ArticleController extends AbstractController
         ArticleRepository $repoArticle,
         Request $request
     ): Response|JsonResponse {
-        $data = new SearchData;
+        $data = new SearchData();
 
         $page = $request->get('page', 1);
         $data->setPage($page);
@@ -38,10 +38,10 @@ class ArticleController extends AbstractController
         if ($request->get('ajax')) {
             return new JsonResponse([
                 'content' => $this->renderView('Components/_articles.html.twig', [
-                    'articles' => $articles
+                    'articles' => $articles,
                 ]),
                 'sortable' => $this->renderView('Components/_sortable.html.twig', [
-                    'articles' => $articles
+                    'articles' => $articles,
                 ]),
                 'count' => $this->renderView('Components/_count.html.twig', [
                     'articles' => $articles,
@@ -49,7 +49,7 @@ class ArticleController extends AbstractController
                 'pagination' => $this->renderView('Components/_pagination.html.twig', [
                     'articles' => $articles,
                 ]),
-                'pages' => ceil($articles->getTotalItemCount() / $articles->getItemNumberPerPage())
+                'pages' => ceil($articles->getTotalItemCount() / $articles->getItemNumberPerPage()),
             ]);
         }
 

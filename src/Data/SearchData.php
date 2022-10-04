@@ -3,47 +3,47 @@
 namespace App\Data;
 
 /**
- * Class for the data of search posts
+ * Class for the data of search posts.
  */
 class SearchData
 {
     /**
-     * The number of the page of search
+     * The number of the page of search.
      *
-     * @var integer|null
+     * @var int|null
      */
     private ?int $page = 1;
 
     /**
-     * The content of the query for title posts
+     * The content of the query for title posts.
      *
      * @var string|null
      */
     private ?string $query = '';
 
     /**
-     * Array of tag for the search posts
+     * Array of tag for the search posts.
      *
      * @var array|null
      */
     private ?array $categories = [];
 
     /**
-     * Array of user for the search posts
+     * Array of user for the search posts.
      *
      * @var array|null
      */
     private ?array $auteur = [];
 
     /**
-     * Array of visibility for the search post
+     * Array of visibility for the search post.
      *
      * @var array|null
      */
     private ?array $active = [];
 
     /**
-     * Get the value of query
+     * Get the value of query.
      *
      * @return ?string
      */
@@ -53,7 +53,7 @@ class SearchData
     }
 
     /**
-     * Set the value of query
+     * Set the value of query.
      *
      * @param ?string $query
      *
@@ -67,7 +67,7 @@ class SearchData
     }
 
     /**
-     * Get the value of categories
+     * Get the value of categories.
      *
      * @return ?array
      */
@@ -77,7 +77,7 @@ class SearchData
     }
 
     /**
-     * Set the value of categories
+     * Set the value of categories.
      *
      * @param ?array $categories
      *
@@ -91,7 +91,7 @@ class SearchData
     }
 
     /**
-     * Get the value of auteur
+     * Get the value of auteur.
      *
      * @return ?array
      */
@@ -101,7 +101,7 @@ class SearchData
     }
 
     /**
-     * Set the value of auteur
+     * Set the value of auteur.
      *
      * @param ?array $auteur
      *
@@ -115,7 +115,7 @@ class SearchData
     }
 
     /**
-     * Get the value of page
+     * Get the value of page.
      *
      * @return ?int
      */
@@ -125,7 +125,7 @@ class SearchData
     }
 
     /**
-     * Set the value of page
+     * Set the value of page.
      *
      * @param ?int $page
      *
@@ -139,7 +139,7 @@ class SearchData
     }
 
     /**
-     * Get the value of active
+     * Get the value of active.
      *
      * @return ?array
      */
@@ -149,7 +149,7 @@ class SearchData
     }
 
     /**
-     * Set the value of active
+     * Set the value of active.
      *
      * @param ?array $active
      *

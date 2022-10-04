@@ -5,17 +5,17 @@ namespace App\Controller\Backend;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admin/user')]
 class UserController extends AbstractController
 {
     /**
-     * Constructeur of UserController
+     * Constructeur of UserController.
      *
      * @param UserRepository $repoUser
      */
@@ -24,7 +24,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Page for list user admin
+     * Page for list user admin.
      *
      * @return Response
      */
@@ -34,7 +34,7 @@ class UserController extends AbstractController
         $users = $this->repoUser->findAll();
 
         return $this->render('Backend/User/index.html.twig', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
 
@@ -64,7 +64,7 @@ class UserController extends AbstractController
         // On envoi la vue de la page d'édition avec le formulaire
         return $this->renderForm('Backend/User/edit.html.twig', [
             'form' => $form,
-            'user' => $user
+            'user' => $user,
         ]);
     }
 
@@ -77,12 +77,14 @@ class UserController extends AbstractController
             return $this->redirectToRoute('admin.user.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->get('_token'))) {
             $this->repoUser->remove($user, true);
 
             $this->addFlash('success', 'Utilisateur supprimé avec succès');
 
             return $this->redirectToRoute('admin.user.index');
         }
+
+        return $this->redirectToRoute('admin.user.index');
     }
 }

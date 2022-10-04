@@ -22,8 +22,8 @@ class SearchArticleType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Rechercher'
-                ]
+                    'placeholder' => 'Rechercher',
+                ],
             ])
             ->add('categories', EntityType::class, [
                 'label' => false,
@@ -36,7 +36,7 @@ class SearchArticleType extends AbstractType
                 },
                 'choice_label' => 'titre',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ])
             ->add('auteur', EntityType::class, [
                 'label' => false,
@@ -48,17 +48,17 @@ class SearchArticleType extends AbstractType
                         ->orderBy('u.nom', 'ASC');
                 },
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ])
             ->add('active', ChoiceType::class, [
                 'label' => false,
                 'required' => false,
                 'choices' => [
                     'oui' => true,
-                    'non' => false
+                    'non' => false,
                 ],
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ]);
     }
 

@@ -45,10 +45,10 @@ class CommentType extends AbstractType
                 'label' => 'En soumettant le formulaire, vous acceptez les mentions légales ainsi que la politique de confidentialité.',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez cocher la case RGPD'
-                    ])
+                        'message' => 'Veuillez cocher la case RGPD',
+                    ]),
                 ],
-                'required' => true
+                'required' => true,
             ]);
     }
 
